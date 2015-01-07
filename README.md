@@ -13,7 +13,7 @@ East Troy, WI has a unique and fun event every year around Christmas: Santa on t
 
 ## Installation
 
-The script should be able to run as-is, but if you're python environment is lacking the Python Image Library, you can install it through pip:
+The script should be able to run as-is, but if your python environment is lacking the Python Image Library, you can install it through pip:
 
 > pip install -r requirements.txt
 
