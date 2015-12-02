@@ -16,6 +16,7 @@ import os
 import random
 import string
 import subprocess
+import qrcode
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw 
@@ -49,7 +50,16 @@ for i in range(1, 201):
         draw.text((1100, 515), str(i), font=font, fill=(249,237,40))
         draw.text((1195, 780), str(r), font=font, fill=(249,237,40))
 
-        # save 
+        # Create a QR Code pointing to the picture code URL
+        qr = qrcode.QRCode(version=1, box_size=6, border=2)
+        qr.add_data('https://easttroy.org/santa/%s' % r)
+        qr.make(fit=True)
+
+        # Make and paste the QR Code into the Santa Card
+        qr_img = qr.make_image()
+        img.paste(qr_img, (360,760))
+
+        # Save image to filesystem
         img.save('./cards/%02d%s.png' % (i, r))
  
         print "Created card for #%s, Code: %s" % (i, r)
