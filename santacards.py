@@ -41,13 +41,13 @@ for i in range(1, 201):
         codes.append(r)
 
         # Open template image and draw on it
-        img = Image.open("template.png")
+        img = Image.open("template-2015.png")
         draw = ImageDraw.Draw(img)  
-        font = ImageFont.truetype("Inconsolata.otf", 72)
+        font = ImageFont.truetype("Inconsolata.otf", 82)
 
         # Draw the text to the image. X,Y cords are in pixels
-        draw.text((430, 527), str(i), (0,0,0), font=font)
-        draw.text((430, 706), str(r), (0,0,0), font=font)
+        draw.text((1100, 515), str(i), font=font, fill=(249,237,40))
+        draw.text((1195, 780), str(r), font=font, fill=(249,237,40))
 
         # save 
         img.save('./cards/%02d%s.png' % (i, r))
