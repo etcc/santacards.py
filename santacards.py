@@ -42,9 +42,9 @@ for i in range(1, 151):
         codes.append(r)
 
         # Open template image and draw on it
-        img = Image.open("template-2015.png")
         draw = ImageDraw.Draw(img)  
         font = ImageFont.truetype("Inconsolata.otf", 82)
+        img = Image.open("template-2016.png")
 
         # Draw the text to the image. X,Y cords are in pixels
         draw.text((1100, 515), str(i), font=font, fill=(249,237,40))
