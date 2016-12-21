@@ -42,13 +42,18 @@ for i in range(1, 151):
         codes.append(r)
 
         # Open template image and draw on it
-        draw = ImageDraw.Draw(img)  
-        font = ImageFont.truetype("Inconsolata.otf", 82)
         img = Image.open("template-2016.png")
+        draw = ImageDraw.Draw(img)
+
+        # A bit of duplication here. The 2016 design required a smaller
+        # font size for the code. TODO: Make this DRY
+        num_font = ImageFont.truetype("Inconsolata.otf", 72)
+        code_font = ImageFont.truetype("Inconsolata.otf", 52)
 
         # Draw the text to the image. X,Y cords are in pixels
-        draw.text((1100, 515), str(i), font=font, fill=(249,237,40))
-        draw.text((1195, 780), str(r), font=font, fill=(249,237,40))
+        # This relies entirely on the graphic design of the card templte.
+        draw.text((1350, 418), str(i), font=num_font, fill=(249,237,40))
+        draw.text((1533, 800), str(r), font=code_font, fill=(249,237,40))
 
         # Create a QR Code pointing to the picture code URL
         qr = qrcode.QRCode(version=1, box_size=6, border=2)
