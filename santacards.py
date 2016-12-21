@@ -56,13 +56,13 @@ for i in range(1, 151):
         draw.text((1533, 800), str(r), font=code_font, fill=(249,237,40))
 
         # Create a QR Code pointing to the picture code URL
-        qr = qrcode.QRCode(version=1, box_size=6, border=2)
+        qr = qrcode.QRCode(version=1, box_size=5, border=2)
         qr.add_data('https://easttroy.org/santa/%s' % r)
         qr.make(fit=True)
 
         # Make and paste the QR Code into the Santa Card
         qr_img = qr.make_image()
-        img.paste(qr_img, (360,760))
+        img.paste(qr_img, (815,770))
 
         # Save image to filesystem
         img.save('./cards/%02d%s.png' % (i, r))
