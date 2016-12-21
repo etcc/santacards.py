@@ -29,7 +29,7 @@ if not os.path.exists('cards'):
 codes = []
 
 # In 2014 there were 101 cards used. So 200 cards should be plenty.
-for i in range(1, 201):
+for i in range(1, 151):
 
     # Grab a list of characters to use in our code generator
     char_pool = string.ascii_uppercase + string.digits
