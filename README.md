@@ -8,8 +8,8 @@ East Troy, WI has a unique and fun event every year around Christmas: Santa on t
 ## Requirements
 
 * Python 2.7 or higher
-* Imagemagick
 * Python Image Library
+* Imagemagick
 
 ## Installation
 
@@ -17,9 +17,13 @@ The script should be able to run as-is, but if your python environment is lackin
 
 > pip install -r requirements.txt
 
+If you're on OS X, Imagemagick can be installed via homebrew:
+
+> brew install imagemagick
+
 ## Usage
 
-``$ python santacards.py``
+``$ ./santacards.py``
 
 A directory will be created alongside this script, filled with PNG images and a PDF file consolidating all the PNG files.
 

@@ -1,25 +1,25 @@
 #!/usr/bin/env python
-#
-# santacards.py - creates printable cards, each with their own unique code.
-#
-# East Troy, WI has a unique and fun event every year around Christmas: Santa on
-# the Square. One of the highlights of this event is getting your picture taken
-# with Santa and Mrs. Claus. You use to have to wait in line. Lines suck. The
-# script below eliminates the need for a line by generating a folder full of
-# printable images that each get stamped with a incrementing number and unique
-# code. The number is the persons position in line and the code is for folks to
-# punch into easttroy.org to redeem their photo.
-#
-# USAGE: $ python santacards.py
+
+"""santacards.py - create printable cards, each with their own unique code.
+
+USAGE: $ python santacards.py
+
+East Troy, WI has a unique and fun event every year around Christmas: Santa on
+the Square. One of the highlights of this event is getting your picture taken
+with Santa and Mrs. Claus. You use to have to wait in line. Lines suck. The
+script below eliminates the need for a line by generating a folder full of
+printable images that each get stamped with a incrementing number and unique
+code. The number is the persons position in line and the code is for folks to
+punch into easttroy.org to redeem their photo.
+"""
 
 import os
 import random
 import string
 import subprocess
+
 import qrcode
-from PIL import Image
-from PIL import ImageFont
-from PIL import ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 # Create the output folder if it doesn't already exists
 if not os.path.exists('cards'):
@@ -42,7 +42,7 @@ for i in range(1, 151):
         codes.append(r)
 
         # Open template image and draw on it
-        img = Image.open("template-2016.png")
+        img = Image.open("template-2017.png")
         draw = ImageDraw.Draw(img)
 
         # A bit of duplication here. The 2016 design required a smaller
@@ -52,17 +52,17 @@ for i in range(1, 151):
 
         # Draw the text to the image. X,Y cords are in pixels
         # This relies entirely on the graphic design of the card templte.
-        draw.text((1350, 418), str(i), font=num_font, fill=(249,237,40))
-        draw.text((1533, 800), str(r), font=code_font, fill=(249,237,40))
+        draw.text((1420, 92), str(i), font=num_font, fill=(249, 237, 40))
+        draw.text((1390, 398), str(r), font=code_font, fill=(249, 237, 40))
 
         # Create a QR Code pointing to the picture code URL
-        qr = qrcode.QRCode(version=1, box_size=5, border=2)
+        qr = qrcode.QRCode(version=1, box_size=8, border=2)
         qr.add_data('https://easttroy.org/santa/%s' % r)
         qr.make(fit=True)
 
         # Make and paste the QR Code into the Santa Card
         qr_img = qr.make_image()
-        img.paste(qr_img, (815,770))
+        img.paste(qr_img, (347, 765))
 
         # Save image to filesystem
         img.save('./cards/%02d%s.png' % (i, r))
