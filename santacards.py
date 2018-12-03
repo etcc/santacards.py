@@ -29,46 +29,46 @@ if not os.path.exists('cards'):
 codes = []
 
 # In 2014 there were 101 cards used. So 200 cards should be plenty.
-for i in range(1, 151):
+for i in range(1, 101):
 
     # Grab a list of characters to use in our code generator
     char_pool = string.ascii_uppercase + string.digits
 
     # Generate a random code
-    r = ''.join([random.choice(char_pool) for n in xrange(5)])
+    r = ''.join([random.choice(char_pool) for n in range(5)])
 
     # Check generated code against pre-existing codes.
     if r not in codes:
         codes.append(r)
 
         # Open template image and draw on it
-        img = Image.open("template-2017.png")
+        img = Image.open("template-2018.png")
         draw = ImageDraw.Draw(img)
 
         # A bit of duplication here. The 2016 design required a smaller
         # font size for the code. TODO: Make this DRY
-        num_font = ImageFont.truetype("Inconsolata.otf", 72)
-        code_font = ImageFont.truetype("Inconsolata.otf", 52)
+        num_font = ImageFont.truetype("Inconsolata.otf", 90)
+        code_font = ImageFont.truetype("Inconsolata.otf", 62)
 
         # Draw the text to the image. X,Y cords are in pixels
         # This relies entirely on the graphic design of the card templte.
-        draw.text((1420, 92), str(i), font=num_font, fill=(249, 237, 40))
-        draw.text((1390, 398), str(r), font=code_font, fill=(249, 237, 40))
+        draw.text((332, 125), str(i), font=num_font, fill=(249, 237, 40))
+        draw.text((307, 800), str(r), font=code_font, fill=(249, 237, 40))
 
         # Create a QR Code pointing to the picture code URL
-        qr = qrcode.QRCode(version=1, box_size=8, border=2)
+        qr = qrcode.QRCode(version=1, box_size=9, border=2)
         qr.add_data('https://easttroy.org/santa/%s' % r)
         qr.make(fit=True)
 
         # Make and paste the QR Code into the Santa Card
         qr_img = qr.make_image()
-        img.paste(qr_img, (347, 765))
+        img.paste(qr_img, (232, 472))
 
         # Save image to filesystem
         img.save('./cards/%02d%s.png' % (i, r))
 
-        print "Created card for #%s, Code: %s" % (i, r)
+        print("Created card for #%s, Code: %s" % (i, r))
 
-print "Merging all cards into a single PDF..."
+print("Merging all cards into a single PDF...")
 
 subprocess.call('convert ./cards/* santacards-printable.pdf', shell=True)

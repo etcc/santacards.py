@@ -7,9 +7,9 @@ East Troy, WI has a unique and fun event every year around Christmas: Santa on t
 
 ## Requirements
 
-* Python 2.7 or higher
+* Python 3.7 or higher
 * Python Image Library
-* Imagemagick
+* Imagemagick >= 7.0.x
 
 ## Installation
 
