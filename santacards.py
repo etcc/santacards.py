@@ -52,8 +52,8 @@ for i in range(1, 101):
 
         # Draw the text to the image. X,Y cords are in pixels
         # This relies entirely on the graphic design of the card templte.
-        draw.text((332, 125), str(i), font=num_font, fill=(249, 237, 40))
-        draw.text((307, 800), str(r), font=code_font, fill=(249, 237, 40))
+        draw.text((550, 90), str(i), font=num_font, fill=(249, 237, 40))
+        draw.text((230, 890), str(r), font=code_font, fill=(0, 0, 0))
 
         # Create a QR Code pointing to the picture code URL
         qr = qrcode.QRCode(version=1, box_size=9, border=2)
@@ -62,7 +62,7 @@ for i in range(1, 101):
 
         # Make and paste the QR Code into the Santa Card
         qr_img = qr.make_image()
-        img.paste(qr_img, (232, 472))
+        img.paste(qr_img, (162, 540))
 
         # Save image to filesystem
         img.save('./cards/%02d%s.png' % (i, r))
