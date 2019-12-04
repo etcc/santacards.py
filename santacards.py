@@ -42,7 +42,7 @@ for i in range(1, 101):
         codes.append(r)
 
         # Open template image and draw on it
-        img = Image.open("template-2018.png")
+        img = Image.open("template-2019.png")
         draw = ImageDraw.Draw(img)
 
         # A bit of duplication here. The 2016 design required a smaller
