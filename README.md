@@ -1,9 +1,9 @@
 Santa Cards
 ===========
 
-![Pictures with Santa](template-2014.png)
-
 East Troy, WI has a unique and fun event every year around Christmas: Santa on the Square. One of the highlights of this event is getting your picture taken with Santa and Mrs. Claus. You use to have to wait in line. Lines suck. This script eliminates the need for a line by generating a folder full of printable images that each get stamped with a incrementing number and unique code. The number is the parties position in line and the code is used to redeem the photo on easttroy.org
+
+![Pictures with Santa](template-2014.png)
 
 ## Requirements
 
